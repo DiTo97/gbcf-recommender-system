@@ -1,15 +1,28 @@
-# Genre-based Collaborative Filtering for Recommender Systems
+# Genre-based Collaborative Filtering for Movies Recommendation Systems
 
 As more and more data is collected every day, we are moving from the age of information to the age of recommendation. One of the key reasons why we need recommendations in modern society, is that now people have too much options to choose from. This is possible due to the prevalence of the Internet. In the past, people use to shop in physical stores, the availability of options were limited and depended on the size of the stores, availability of products and marketing techniques. For instance, the number of movies that can be placed in a store depends on the size of that store. By contrast, nowadays, the Internet allows people to access abundant resources online. Netflix, for example, has a huge collection of movies. Although the amount of available information has increased, a new problem has arisen as people have a hard time selecting the items they actually want to see.
 
 This project aims at implementing a different flavor of the well-known Item-based Collaborative Filtering (IBCF) typilically implied to develop recommender systems, which focuses solely on genre correlations among items, from which the name Genre-based Collaborative Filtering (GBCF). It is inspired by the method proposed by S. Choi, S. Ko, et al., A Movie Recommendation Algorithm Based on Genre Correlations, 2012, tailored to deisign a movies recommendation system on the [MovieLens dataset](https://grouplens.org/datasets/movielens/), avoiding any kind of influence from fluid sources, like user ratings. Indeed since genres are assumed to be assigned to movies by domain experts, we want to assert if they can provide good accuracy in terms of predictive power of the similarity model.
 
-## Things to keep in mind
+This project belongs to a larger project in conjunction with S. Bagnato, G. Losapio and M. Ghirardelli, whose goal was to compare different recommendation algorithms for movies recommendation systems on Spark, in terms of quality metrics and runtime. More specifically:
+- Training time (min);
+- RMSE of the movies rating in [0, 5];
+- Accuracy as the mean ration of matchings between the Top 10 recommendend movies and the movies truly liked by each user, where truly liked means with a rating geq than 3.
+
+## Design choices
+
+The GBCF algorithm has been implemented both locally in Python to analyze its validity in a trivial setting, and then later on in Scala in order to fully utilize the Spark engine on top of Hadoop distributed filesystem (HDFS) that has allowed the processing of the full MovieLens dataset.
+
 - *Scala vs. Python*: The teacher of the [Spark course](https://learning.oreilly.com/videos/apache-spark-with/9781787129849/9781787129849-video4_7) on O'Reilly touches upon the movies IBCF problem suggesting an implementation in Scala, since in his experimentations it took **30 seconds** to run the **Scala** program, as opposed to the **15 minutes** it took with the same code written in **Python**.
 
 - *Movies genres in IBCF*: The aforementioned teacher suggests to try and incorporate some kind of boosting reward to the similarity scores whenever movies belong to the same class of genres (i.e., the closer the genres, the higher the boost), as it should help preventing spurious correlations between movies from appearing in the end result.
 
-- Check out the `resources` folder for papers on IBCF.
+## Folder structure
+
+- `code` folder contains code related to the MovieLens dataset preprocessing, the GBCF module and a Jupyter notebook with GBCF local implementation;
+- `data` folder contains the raw MovieLens dataset as well the preprocessed CSV files that should be placed in the HDFS;
+- `presentation` folder contains the presentation described above with compartive results on Spark;
+- `resources` folder contains papers on IBCF.
 
 ## Introduction
 
