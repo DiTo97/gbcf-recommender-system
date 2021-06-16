@@ -4,6 +4,8 @@ As more and more data is collected every day, we are moving from the age of info
 
 This project aims at implementing a different flavor of the well-known Item-based Collaborative Filtering (IBCF) typilically implied to develop recommender systems, which focuses solely on genre correlations among items, from which the name Genre-based Collaborative Filtering (GBCF). It is inspired by the method proposed by S. Choi, S. Ko, et al., A Movie Recommendation Algorithm Based on Genre Correlations, 2012, tailored to deisign a movies recommendation system on the [MovieLens dataset](https://grouplens.org/datasets/movielens/), avoiding any kind of influence from fluid sources, like user ratings. Indeed since genres are assumed to be assigned to movies by domain experts, we want to assert if they can provide good accuracy in terms of predictive power of the similarity model.
 
+The advantages the GBCF apporach brings are two-fold. On the one hand it allows for a much faster training, as it does not have to learn from the millions of movies ratings, but rather from their latent aggregation in a _n_-by-_n_ genre correlations matrix **G**, where _n_ is the number of genres, which at worst is expected to be 3 to 4 orders of magnitude smaller than the number of movies ratings; on the other hand it effectively solves the _cold start_ problem, that is, how to make quality predictions for users that, for instance, may have just subscribed to a streaming service. Indeed as many services ask the users about the may or may not like beforehand, such an approach can intrinsecally estimate their favourite genres right-away and produce somewhat reliable predictions from the get-go.
+
 This project belongs to a larger project in conjunction with S. Bagnato, G. Losapio and M. Ghirardelli, whose goal was to compare different recommendation algorithms for movies recommendation systems on Spark, in terms of quality metrics and runtime. More specifically:
 - Training time (min);
 - RMSE of the movies rating in [0, 5];
@@ -20,14 +22,11 @@ The GBCF algorithm has been implemented both locally in Python to analyze its va
 ## Folder structure
 
 - `code` folder contains code related to the MovieLens dataset preprocessing, the GBCF module and a Jupyter notebook with GBCF local implementation;
-- `data` folder contains the raw MovieLens dataset as well the preprocessed CSV files that should be placed in the HDFS;
+- `data` folder contains the raw MovieLens dataset as well the preprocessed CSV files;
 - `presentation` folder contains the presentation described above with compartive results on Spark;
 - `resources` folder contains papers on IBCF.
 
-## Introduction
-
-
-## What is a recommender system?
+## Recommendation systems
 A recommender system refers to a system that is capable of predicting the future preference of a set of items for a user. It is a subclass of information filtering system that seeks to predict the rating or preference a user would give to a particular item. These systems are utilized enormously across multiple industries. Recommender systems are most commonly used as playlist generators for video and music services like Netflix, YouTube and Spotify, or product recommenders for services such as Amazon, or content recommenders for social media platforms such as Facebook and Twitter. A huge amount of research and wealth is invested by industries to find out techniques to get great recommendation and improve user experience.
 
 Multiple researcher in different industries use multiple approaches to design their recommendation system. Traditionally, there are two methods to construct a recommender system:
@@ -70,7 +69,7 @@ We proceed with the assumption that if a user *A* has watched movie *i* and rate
 <br>
 <br>
 
-Spark MLlib, on the other hand, implements a collaborative filtering algorithm called **Alternating least squares** (**ALS**), which has been implemented in many machine learning libraries and widely studied and used in both academia and industry. ALS models the rating matrix (***R***) as the multiplication of low-rank user (***U***) and product (***V***) factors, and learns these factors by minimizing the reconstruction error of the observed ratings. The unknown ratings can subsequently be computed by multiplying these predicted factors.
+Spark MLlib, on the other hand, implements a collaborative filtering algorithm called **Alternating Least Squares** (**ALS**), which has been implemented in many machine learning libraries and widely studied and used in both academia and industry. ALS models the rating matrix (***R***) as the multiplication of low-rank user (***U***) and product (***V***) factors, and learns these factors by minimizing the reconstruction error of the observed ratings. The unknown ratings can subsequently be computed by multiplying these predicted factors.
 
 <div style="text-align:center">
 	<img src="./images/ALS.png" alt="Alternating least squares" style="width:50%;"/>
