@@ -1,4 +1,6 @@
-# Project LsC exam
+# Genre-based Collaborative Filtering for Recommender Systems
+
+This project aims at implementing a different flavor of the well-known Item-based Collaborative Filtering (IBCF) typilically implied to develop recommender systems, which focuses solely on genre correlations among items, from which the name Genre-based Collaborative Filtering (GBCF). It is inspired by the method proposed by S. Choi, S. Ko, et al., A Movie Recommendation Algorithm Based on Genre Correlations, 2012, tailored to deisign a movies recommendation system on the [MovieLens dataset](https://grouplens.org/datasets/movielens/), avoiding any kind of influence from fluid sources, like user ratings. Indeed since genres are assumed to be assigned to movies by domain experts, we want to assert if they can provide good accuracy in terms of predictive power of the similarity model.
 
 ## Things to keep in mind
 - *Scala vs. Python*: The teacher of the [Spark course](https://learning.oreilly.com/videos/apache-spark-with/9781787129849/9781787129849-video4_7) on O'Reilly touches upon the movies IBCF problem suggesting an implementation in Scala, since in his experimentations it took **30 seconds** to run the **Scala** program, as opposed to the **15 minutes** it took with the same code written in **Python**.
@@ -68,34 +70,3 @@ ALS is an iterative algorithm. In each iteration, the algorithm alternatively fi
 	<img src="./images/ALS_on_Amazon_reviews.png" alt="ALS on Amazon reviews across 16 Spark nodes" style="width:67%;"/>
 	<figcaption><b>Fig. 3 - ALS on Amazon reviews across 16 Spark nodes</b></figcaption>
 </div>
-
-
-### Pseudocode
-Hence for this case study, IBCF follows this 8-step process:
-1. ??
-2. ??
-3. ??
-5. ??
-4. ??
-6. ??
-7. ??
-8. ??
-
-
-## Useful links
-[Surprise lib in Python](http://surpriselib.com/)
-
-[IBCF documentation in Spark MLlib](https://spark.apache.org/docs/latest/mllib-collaborative-filtering.html)
-
-### Sample implementations
-[In-depth IBCF analysis - Part 1](https://towardsdatascience.com/prototyping-a-recommender-system-step-by-step-part-1-knn-item-based-collaborative-filtering-637969614ea)
-
-[In-depth IBCF analysis - Part 2](https://towardsdatascience.com/prototyping-a-recommender-system-step-by-step-part-2-alternating-least-square-als-matrix-4a76c58714a1)
-
-[Python implementation of IBCF](https://medium.com/@wwwbbb8510/python-implementation-of-baseline-item-based-collaborative-filtering-2ba7c8960590)
-
-[IBCF with Apache Spark in Scala](https://towardsdatascience.com/collaborative-filtering-recommendation-system-with-apache-spark-using-scala-9a68e02e814d)
-
-[Kaggle tutorial of IBCF with PySpark](https://www.kaggle.com/vchulski/tutorial-collaborative-filtering-with-pyspark)
-
-[Online web service IBCF with PySpark](https://github.com/jadianes/spark-movie-lens)
