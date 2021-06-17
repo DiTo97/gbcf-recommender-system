@@ -9,7 +9,7 @@ The advantages the GBCF approach brings are two-fold. On the one hand, it allows
 This project belongs to a larger project in conjunction with S. Bagnato, G. Losapio and M. Ghirardelli, whose goal was to compare different recommendation algorithms for movies recommendation systems on Spark, such as GBCF, cosine similarity IBCF and ALS, in terms of quality metrics and runtime. More specifically:
 - Training time (min);
 - RMSE of the movies ratings in [0, 5];
-- Accuracy as the mean ration of matchings between the Top 10 recommendend movies and the movies truly liked by each user where truly liked means with a rating geq than 3.
+- Accuracy as the mean ratio of matchings between the Top 10 recommendend movies and the movies truly liked by each user at time _t_, where truly liked means with a rating geq than 3.
 
 ## Design choices
 
