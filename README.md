@@ -22,7 +22,7 @@ The GBCF algorithm has been implemented both locally in Python to analyze its va
 ## Folder structure
 
 - `src` folder contains code related to the MovieLens dataset preprocessing, the GBCF module and a Jupyter notebook with GBCF local implementation;
-- `dataset folder contains the raw MovieLens dataset;
+- `dataset` folder contains the raw MovieLens dataset;
 - `presentation` folder contains the presentation described above with compartive results on Spark;
 - `resources` folder contains papers on IBCF.
 
